@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:newtestproject/Screens/filter.dart';
+import 'package:newtestproject/Screens/galleryScreen.dart';
 
 void main() {
   runApp(Home());
@@ -6,7 +8,6 @@ void main() {
 
 class Home extends StatelessWidget {
   const Home({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -56,7 +57,9 @@ class _HomePageState extends State<HomePage> {
               ),
               elevation: 0,
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context)=> filter()));
+            },
             icon: Icon(Icons.add, color: Colors.black),
             label: Text(
               "New",

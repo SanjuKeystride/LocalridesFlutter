@@ -1,23 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:newtestproject/Screens/brandSelection.dart';
 
-class Filter extends StatelessWidget {
+
+
+class filter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Filter Example')),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            showModalBottomSheet(
-              context: context,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-              ),
-              isScrollControlled: true,
-              builder: (context) => FilterContent(),
-            );
-          },
-          child: Text('Show Filters'),
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text('Filter Example')),
+        body: Center(
+          child: ElevatedButton(
+            onPressed: () {
+              showModalBottomSheet(
+                context: context,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+                ),
+                isScrollControlled: true,
+                builder: (context) => FilterContent(),
+              );
+            },
+            child: Text('Show Filters'),
+          ),
         ),
       ),
     );
@@ -192,7 +197,7 @@ class _FilterContentState extends State<FilterContent> {
               ElevatedButton(
                 onPressed: () {
                   // Handle apply action
-                  Navigator.pop(context);
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> BrandSelector()));
                   print("Filters applied.");
                 },
                 style: ElevatedButton.styleFrom(
@@ -210,4 +215,3 @@ class _FilterContentState extends State<FilterContent> {
     );
   }
 }
-

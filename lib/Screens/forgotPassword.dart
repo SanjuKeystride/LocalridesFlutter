@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:newtestproject/Screens/filter.dart';
+import 'package:newtestproject/Screens/galleryScreen.dart';
 import 'package:newtestproject/Screens/home.dart';
-import 'package:newtestproject/Screens/login.dart';
+
 
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({super.key});
@@ -91,7 +92,9 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   height: 20,
                 ),
                 FilledButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=> Home()));
+                    },
                     style: ButtonStyle(
                       backgroundColor: WidgetStateProperty.all<Color>(
                           Colors.lightGreenAccent), // Set your desired color
@@ -127,7 +130,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     BackButton(
                       onPressed: () {
                         print("Back Button Tapped");
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> Filter()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> GalleryScreen()));
                       },
                     ),
                     SizedBox(
