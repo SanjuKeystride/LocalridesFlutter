@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:newtestproject/Screens/filter.dart';
 import 'package:newtestproject/Screens/galleryScreen.dart';
-import 'package:newtestproject/Screens/home.dart';
-
+import 'package:newtestproject/Screens/profile.dart';
+import 'package:newtestproject/Screens/search.dart';
 
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({super.key});
@@ -15,127 +14,141 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: Colors.grey,
-      // ),
-       backgroundColor: Colors.white,
-      bottomSheet: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(50),
-          color: Colors.transparent,
-        ),
-        height: MediaQuery.of(context).size.height -
-            MediaQuery.of(context).padding.top -
-            MediaQuery.of(context).padding.bottom,
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              // Start content from the top
-              crossAxisAlignment: CrossAxisAlignment.center,
-              // Align content to the start horizontally
-              children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
+      backgroundColor: Colors.white,
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              // Header with Back Button and Title
+              Row(
+                children: [
+                  BackButton(
+                    onPressed: () {
+                      Navigator.pop(context); // Navigate back to previous screen
+                    },
+                  ),
+                  Spacer(), // Pushes title to the center
+                  Text(
+                    "Forgot Password",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                    ),
+                  ),
+                  Spacer(), // Pushes title to the center
+                ],
+              ),
+              SizedBox(height: 30),
+
+              // Email Icon
+              Icon(
+                Icons.email_outlined,
+                size: 100,
+                color: Colors.deepOrange,
+              ),
+              SizedBox(height: 10),
+
+              // Main Title
+              Text(
+                "Check your Email",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 25,
+                ),
+              ),
+              SizedBox(height: 10),
+
+              // Description with Email
+              RichText(
+                textAlign: TextAlign.center,
+                text: TextSpan(
+                  text: "We sent a password reset link to ",
+                  style: TextStyle(fontSize: 16, color: Colors.black),
                   children: [
-                    BackButton(
-                      onPressed: () {
-                        print("Back Button Tapped");
-                      },
-                    ),
-                    SizedBox(
-                      width: 50,
-                    ),
-                    Text(
-                      "Forgot Password",
+                    TextSpan(
+                      text: "kmsanju8@gmail.com",
                       style: TextStyle(
+                        fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        fontSize: 20,
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: 30),
-                Row(
+              ),
+              SizedBox(height: 20),
+
+              // Open Email App Button
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Search()),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.lightGreenAccent,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+                child: SizedBox(
+                  width: double.infinity,
+                  child: Center(
+                    child: Text(
+                      "Open email app",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+
+              // Resend Email Option
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Didn't receive the email? ",
+                    style: TextStyle(color: Colors.black, fontSize: 16),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      print("Resend tapped");
+                    },
+                    child: Text(
+                      "Tap to resend",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 20),
+
+              // Back to Login Option
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => GalleryScreen()),
+                  );
+                },
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Icon(
-                      Icons.email_outlined,
-                      size: 100,
-                      color: Colors.deepOrange,
+                      Icons.arrow_back,
+                      color: Colors.black,
                     ),
-                  ],
-                ),
-                SizedBox(height: 10),
-                Text(
-                  "Check your Email",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25,
-                  ),
-                ),
-                SizedBox(height: 10),
-                RichText(
-                  textAlign: TextAlign.center,
-                  text: TextSpan(
-                      text: "we sent a email password reset link to",
-                      style: TextStyle(fontSize: 16, color: Colors.black),
-                      children: [
-                        TextSpan(
-                            text: " kmsanju8@gmail.com",
-                            style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold))
-                      ]),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                FilledButton(
-                    onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=> Home()));
-                    },
-                    style: ButtonStyle(
-                      backgroundColor: WidgetStateProperty.all<Color>(
-                          Colors.lightGreenAccent), // Set your desired color
-                    ),
-                    child: SizedBox(
-                      width: double.infinity,
-                      child: Center(child: Text("open email app")),
-                    )),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Didn't receive the email? ",
-                      style: TextStyle(color: Colors.black, fontSize: 16),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        print("resend Tapped");
-                      },
-                      child: Text(
-                        "Tap to resend",
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    BackButton(
-                      onPressed: () {
-                        print("Back Button Tapped");
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> GalleryScreen()));
-                      },
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
+                    SizedBox(width: 8),
                     Text(
                       "Back to login",
                       style: TextStyle(
@@ -146,8 +159,8 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     ),
                   ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
