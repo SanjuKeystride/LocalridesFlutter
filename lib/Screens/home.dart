@@ -2,10 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:newtestproject/Screens/filter.dart';
 import 'package:newtestproject/Screens/galleryScreen.dart';
 
-void main() {
-  runApp(Home());
-}
-
 class Home extends StatelessWidget {
   const Home({super.key});
   @override

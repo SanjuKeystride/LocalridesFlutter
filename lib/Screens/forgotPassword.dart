@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:newtestproject/Screens/bookingConfirmation.dart';
 import 'package:newtestproject/Screens/galleryScreen.dart';
 import 'package:newtestproject/Screens/profile.dart';
 import 'package:newtestproject/Screens/search.dart';
@@ -85,7 +86,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Search()),
+                    MaterialPageRoute(builder: (context) => BookingConfirmationScreen()),
                   );
                 },
                 style: ElevatedButton.styleFrom(
